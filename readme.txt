@@ -1,6 +1,6 @@
 === Awebsome! Browser Selector ===
 Contributors: awebsome, raulillana
-Tags: awebsome, browser, selector, CSS, PHP, OS
+Tags: awebsome, browser, selector, CSS, PHP
 Requires at least: 3.0
 Tested up to: 3.2
 Stable tag: trunk
@@ -11,9 +11,12 @@ Empower your CSS selectors! Write specific CSS code for each OS/Browser the righ
 
 == Description ==
 
-Based in PHP CSS Browser Selector v0.0.1 (http://bastian-allgeier.de/css_browser_selector) from Bastian Allgeier (http://bastian-allgeier.de)
-License: http://creativecommons.org/licenses/by/2.5/
-Credits: This is a WordPress plugin port from a PHP port from Rafael Lima's original Javascript CSS Browser Selector: http://rafael.adm.br/css_browser_selector
+Empower your CSS selectors! Write specific CSS code for each OS/Browser the right way.
+
+= Based in =
+
+[PHP CSS Browser Selector] (http://bastian-allgeier.de/css_browser_selector) from Bastian Allgeier
+[JS CSS Browser Selector] (http://rafael.adm.br/css_browser_selector) from Rafael Lima
 
 Adds classes in the body tag with OS/Browser names, so you can add quick and clean CSS patches.
 
@@ -24,7 +27,6 @@ Adds classes in the body tag with OS/Browser names, so you can add quick and cle
 * linux - x11 and Linux distros
 * mac - MacOS
 * freebsd - FreeBSD
-
 * mobile - All mobile devices
 * android - Google Android
 * iphone - iPhone
@@ -42,7 +44,6 @@ Adds classes in the body tag with OS/Browser names, so you can add quick and cle
 * ie7 - Internet Explorer 7.x
 * ie8 - Internet Explorer 8.x
 * ie9 - Internet Explorer 9.x
-
 * gecko - Mozilla, Firefox (All Versions), Camino
 * ff2 - Firefox 2
 * ff3 - Firefox 3
@@ -50,17 +51,14 @@ Adds classes in the body tag with OS/Browser names, so you can add quick and cle
 * ff3_6 - Firefox 3.6
 * ff4 - Firefox 4
 * ff5 - Firefox 5
-
 * opera - Opera (All Versions)
 * opera8 - Opera 8.x
 * opera9 - Opera 9.x
 * opera10 - Opera 10.x
-
 * webkit - Safari, NetNewsWire, OmniWeb, Shiira, Google Chrome
 * safari - Safari, NetNewsWire, OmniWeb, Shiira, Google Chrome
 * safari3 - Safari 3.x
 * chrome - Google Chrome
-
 * konqueror - Konqueror
 * iron - SRWare Iron
 
@@ -94,10 +92,16 @@ This plugins just adds classes to your body tag, so screenshots not really neede
 
 == Changelog ==
 
+= 1.0.1 =
+
+Updated descriptions.
+
 = 1.0 =
 
 * Born with basic functionality and docs.
 
 == Upgrade Notice ==
 
-None.
+= 1.0.1 =
+
+Updated descriptions. No Update required!

@@ -3,11 +3,10 @@
 	Plugin Name: Awebsome! Browser Selector
 	Plugin URI: http://plugins.awebsome.com
 	Description: Empower your CSS selectors. Write specific CSS code for each OS/Browser the right way.
-	Version: 1.0
+	Version: 1.0.1
 	Author: Capt. WordPress - Awebsome! <cpt.wp@awebsome.com>
 	Author URI: http://awebsome.com/services/wordpress
 	License: GPLv2
-	Credits: This is a WordPress plugin port from PHP CSS Browser Selector of Bastian Allgeier (http://bastian-allgeier.de/css_browser_selector) ported from Rafael Lima's original Javascript CSS Browser Selector (http://rafael.adm.br/css_browser_selector)
 */
 
 /**
