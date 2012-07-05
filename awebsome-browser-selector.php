@@ -3,9 +3,9 @@
 	Plugin Name: Awebsome! Browser Selector
 	Plugin URI: http://plugins.awebsome.com
 	Description: Empower your CSS selectors. Write specific CSS code for each OS/Browser the right way.
-	Version: 1.1
-	Author: Capt. WordPress - Awebsome! <cpt.wp@awebsome.com>
-	Author URI: http://awebsome.com/services/wordpress
+	Version: 1.2
+	Author: Raul Illana <r@awebsome.com>
+	Author URI: http://raulillana.com
 	License: GPLv2
 */
 
@@ -73,21 +73,26 @@ function awebsome_browsel_filter_UA( $ua=null )
 	return join(' ', $b);
 }
 
-// Add filter hook
-//add_filter('body_class','awebsome_browsel_class_names');
-
-// Deprecated to...
-include_once(ABSPATH .'wp-admin/includes/plugin.php');
-
-$bp = 'buddypress/buddypress.php';
-$plugins = array(
-	'wp-super-cache/wp-cache.php',
-	'w3-total-cache/w3-total-cache.php'
-);
-
-foreach( $plugins as $plugin )
+/**
+ * Starts the plugin on init
+ * 
+ * @since 1.2
+ */
+function awebsome_init_check_cache()
 {
-	if( !is_plugin_active($plugin) ) // caching is disabled
+	include_once(ABSPATH .'wp-admin/includes/plugin.php');
+	
+	$res = false;
+	$bp = 'buddypress/buddypress.php';
+	$plugins = array(
+		'wp-super-cache/wp-cache.php',
+		'w3-total-cache/w3-total-cache.php'
+	);
+	
+	foreach( $plugins as $plugin ) if( !is_plugin_active($plugin) ) $res == true;
+	
+	// caching is disabled
+	if( $res )
 	{
 		add_filter('body_class','awebsome_browsel_class_names');
 		if( is_plugin_active($bp) ) add_filter('bp_get_the_body_class','awebsome_browsel_class_names'); // BuddyPress support!
@@ -95,21 +100,30 @@ foreach( $plugins as $plugin )
 	else // caching is enabled - add browser classes using AJAX calls
 	{
 		add_action('init', 'enqueue_awebsome_browsel_scripts'); // this does the ajax request
-		
+			
 		// allow both logged in and not logged in users to send this AJAX request
 		add_action('wp_ajax_nopriv_awebsome-browsel', 'awebsome_browsel_ajax');
 		add_action('wp_ajax_awebsome-browsel', 'awebsome_browsel_ajax');
-		
 	}
 }
+add_action('init', 'awebsome_init_check_cache');
 
+/**
+ * Wrapper function for the AJAX call
+ * 
+ * @since 1.1
+ */
 function awebsome_browsel_ajax()
 {
 	print awebsome_browsel_filter_UA();
 	exit();
 }
 
-
+/**
+ * Inits AJAX scripts
+ * 
+ * @since 1.1
+ */
 function enqueue_awebsome_browsel_scripts()
 {
 	$ajaxurl = admin_url('admin-ajax.php');
@@ -118,11 +132,17 @@ function enqueue_awebsome_browsel_scripts()
 	array_shift($ajaxurl);
 	$ajaxurl = '/'. implode('/',$ajaxurl);
 	
-	wp_enqueue_script('awebsome_browsel-ajax', plugin_dir_url(__FILE__) .'js/helper-ajaxs.js', array('jquery'));
+	wp_enqueue_script('awebsome_browsel-ajax', plugin_dir_url(__FILE__) .'js/helper-ajax.js', array('jquery'));
 	wp_localize_script('awebsome_browsel-ajax', 'AwebsomeBrowserSelector', array('ajaxurl' => $ajaxurl));
 }
 
-function print_awebsome_browsel_scripts ( ) {
+/**
+ * Prints scripts
+ * 
+ * @since 1.1
+ */
+function print_awebsome_browsel_scripts()
+{
 	wp_print_scripts('awebsome_browsel');
 }
 
